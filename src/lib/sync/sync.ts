@@ -21,7 +21,12 @@ export type SyncAssignment = {
     points_earned: number;
 }
 
-export async function sync(adapter: SyncAdapter): Promise<SyncResult> {
+export type SyncProps = {
+    email: string;
+    password: string;
+}
+
+export async function sync(adapter: SyncAdapter, props: SyncProps): Promise<SyncResult> {
     console.warn("Syncing is not implemented yet");
     return {
         courses: []

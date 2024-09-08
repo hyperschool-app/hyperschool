@@ -95,8 +95,15 @@ function createManager() {
 
             this.state = ["syncing"];
 
+            if (!this.email || !this.password) {
+                throw new Error("invalid state, state mismatches with email + password presence");
+            }
+
             try {
-                await sync(proxy("/api/proxy"));
+                await sync(proxy("/api/proxy"), {
+                    email: this.email,
+                    password: this.password
+                });
                 this.state = ["idle"];
             } catch (e) {
                 this.state = ["error", { message: (e as any).message }];
