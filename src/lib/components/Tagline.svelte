@@ -1,0 +1,1 @@
+<p class="text-muted-foreground" aria-hidden="true"><slot/></p>
